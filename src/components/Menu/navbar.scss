@@ -1,0 +1,18 @@
+$colorBackground : #D5EFF1;
+$colorFont: #764127;
+
+
+.estilos{
+  color: $colorFont;
+  background-color: $colorBackground;
+  
+  
+}
+
+.navbar{
+  height: 70px;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
