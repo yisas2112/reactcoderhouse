@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button, Modal} from 'react-bootstrap';
 
 const Contador = ({initialValue, max, min, onaDD}) =>{
-    const[count, setCount] = useState(initialValue);    
+    const[count, setCount] = useState(initialValue);  
+    const[show, setshow]  = useState(false);    
 
     const Sumar = () =>{        
         if(count !=max){
@@ -19,13 +21,14 @@ const Contador = ({initialValue, max, min, onaDD}) =>{
         }        
 
         onaDD(count-1);
-   }
-   
-   const AddToCarrito =()=>{
-       console.log(`Agregaste al carrito ${count} cantidades`);
-   }
+   }  
+  
+
+   const handleClose = () =>setshow(false);
+   const handleShow = () =>setshow(true);
    
     return(
+        <>
         <div className="text-center border border-primary w-25 m-auto bg-light">
             <div className="my-3">
                 <p>Remera</p>
@@ -36,9 +39,23 @@ const Contador = ({initialValue, max, min, onaDD}) =>{
                 <button className="mx-2 btn btn-primary" onClick={(Restar)}>-</button>  
             </div>
             <div className="mx-2">
-                <button className="btn btn-primary my-3 " onClick={(AddToCarrito)}>Agregar al Carrito</button>
+                <button type="button" className="btn btn-primary my-3 " onClick={(handleShow)}>Agregar al Carrito</button>
             </div>
         </div>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Agregaste al carrito {count} cantidades</Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>Save Changes</Button>                
+            </Modal.Footer>
+        </Modal>
+        </>
+        
     )
 }
 
