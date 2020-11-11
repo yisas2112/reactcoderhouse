@@ -1,7 +1,6 @@
 import React from 'react';
 import BarraNav from './components/Menu/Navbar';
 import Home from './containers/Home/Home';
-import Contador from './components/ItemCount';
 
 //import $ from 'jquery';
 //import Popper from 'popper.js';
@@ -15,6 +14,8 @@ function App() {
     <>
     <BarraNav/>,
     <Home greetings="Bienvenido!"/>
+    
+    
     </>
   );
 }
