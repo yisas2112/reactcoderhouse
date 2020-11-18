@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import ItemDetail from './ItemDetail';
+import Data from './productos.json';
+
 
 const ItemDetailContainer = () =>{
     const {parametro} = useParams();         
-    const [productId, setProducId] = useState();            
+    const [productId, setProducId] = useState();   
+    const [product, setProduct] = useState();
       
     
     useEffect(()=>{  
@@ -15,18 +18,20 @@ const ItemDetailContainer = () =>{
     const getProduct =() =>{
         const server = new Promise(resolve =>{
 
-            setTimeout(()=>{resolve(parametro)},2000);
+            setTimeout(()=>{resolve(Data)},2000);
+            
         })
         server.then(response=>{
-            setProducId(response);
+            setProduct(response);
+            
         });
     }
 
     const ReturnProducts = () =>{
-        if(!productId){
+        if(!product){
             return <p className="m-3">...Cargando Productos</p>
         }
-        return <ItemDetail producto={productId}/>
+        return <ItemDetail producto={product}/>
         
     }
 

@@ -1,21 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import Data from './productos.json';
+import React from 'react';
 
-const ItemDetail = ({producto})=>{
-    const [product, setProduct] = useState();    
 
-    useEffect(()=>{
-
-        setProduct(producto);
-
-    });
+const ItemDetail = ({product})=>{
+    
 
     
 
     return <>
-        <div>{product}</div>
+    <div>asdadasd</div>
+        
     </>
 
 }
+
 
 export default ItemDetail;
