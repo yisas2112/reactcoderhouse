@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';  
-import Item from './item';
 import Data from './productos.json';
+import Item from './item';
+
 
 const ItemList = () =>{
     const[product, setproduct] = useState();
@@ -20,24 +21,16 @@ const ItemList = () =>{
         });
     }
 
-
-    const ReturnProducts = () =>{
-        if(!product){
-            return <p className="m-3">...Cargando Productos</p>
-        }
-        product.map(products =><Item products={products}/>)
-    
-    }
-
     return <>
     <div>
         <h2 className="h2">Productos</h2>
-        <div className="row w-100">
-            
-        <ReturnProducts/>
+        <div className="row w-100">            
+        <Item product={product}/>
         </div> 
     </div>    
     </>
+
+
 }
 
 
