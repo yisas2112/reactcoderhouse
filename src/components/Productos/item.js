@@ -1,5 +1,4 @@
 import React from 'react';
-import ItemDetail from './ItemDetailContainer';
 import {Link} from 'react-router-dom';
 
 const Item = ({product}) =>{
