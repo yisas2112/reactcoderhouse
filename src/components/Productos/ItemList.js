@@ -23,7 +23,7 @@ const ItemList = () =>{
 
     return <>
     <div>
-        <h2 className="h2">Productos</h2>
+        <h2 className="h2 text-center my-3">Productos</h2>
         <div className="row w-100">            
         <Item product={product}/>
         </div> 

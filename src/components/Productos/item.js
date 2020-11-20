@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './Item.css';
 
 const Item = ({product}) =>{
     const producto = product;   
@@ -8,9 +9,9 @@ const Item = ({product}) =>{
         if(!producto){
             return <p className="m-3">...Cargando Productos</p>
         }
-        const list = producto.map((elemento, index)=>{
+        return producto.map((elemento, index)=>{
                     if(elemento.id <= 20){
-                    return <div className="col-3" key={index}>
+                    return <div className="col-4 Item" key={index}>
                                 <div className="card card-cascade card-ecommerce m-3">
                                     {/* Card Image */}
                                     <div className="view view-cascade overlay">                                
@@ -22,7 +23,7 @@ const Item = ({product}) =>{
                                     {/* Card Content */}                            
                                     <div className="card-body card-body-cascade text-center">   
                                         <h5>{elemento.Model} - {elemento.year}</h5>
-                                        <button type="button" className="btn btn-primary">Comprar</button>
+                                        <Link to={`detalle/${elemento.id}`}><button type="button" className="btn btn-primary">Detalle</button></Link> 
                                     </div>
                                     {/* Card Footer */}
                                     
@@ -31,9 +32,9 @@ const Item = ({product}) =>{
                                     </div>                            
                                 </div>
                             </div>
-                    }    })
+                    }
+                })                
                 
-                return list;
     }
 
     return <>    

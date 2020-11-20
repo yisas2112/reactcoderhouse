@@ -1,28 +1,26 @@
 import React from 'react';
+import ItemCount from '../ItemCount';
 
 
 const ItemDetail = ({product})=>{
-    console.log(product);   
+    console.log(product);
+    const ShowCant = (value)=>{
+        console.log(value);
+    }   
 
-    return <div className="col-3">
-            <div className="card card-cascade card-ecommerce m-3">
-                {/* Card Image */}
-                <div className="view view-cascade overlay">                                
-                <img className="card-img-top" src={product.img}></img>
-                    <a>
-                        <div className="mask rgba-white-slight"></div>
-                    </a>
+    return <div className="card text-center col-4 m-auto p-0">
+            <div className="card-header">
+                Modelo: {product.Model} 
+            </div>
+            <div class="card-body d-flex">                
+                <img class="card-text m-3" src={product.img}></img>
+                <div className="m-auto">
+                <ItemCount initialValue={0} max={20} min={0} onaDD={ShowCant}/>
+                <a href="#" class="btn btn-primary">Comprar</a>
                 </div>
-                {/* Card Content */}                            
-                <div className="card-body card-body-cascade text-center">   
-                    <h5>{product.Model} - {product.year}</h5>
-                    <button type="button" className="btn btn-primary">Comprar</button>
-                </div>
-                {/* Card Footer */}
-                
-                <div className="card-footer m-auto w-100">
-                    <span>{product.Price}</span>                                                                
-                </div>                            
+            </div>
+            <div class="card-footer text-muted">
+            Año: {product.year}               
             </div>
         </div>
 

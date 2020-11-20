@@ -29,7 +29,7 @@ const Contador = ({initialValue, max, min, onaDD}) =>{
    
     return(
         <>
-        <div className="text-center border border-primary w-25 m-auto bg-light">
+        <div className="text-center border border-primary m-auto bg-light">
             <div className="my-3">
                 <p>Remera</p>
             </div>

@@ -14,7 +14,7 @@ function App() {
     <BarraNav/>
     <Switch>
       <Route exact path='/'>
-      <Home greetings="Bienvenido!"/>
+      <Home greetings="E-commerce"/>
       </Route>
       <Route exact path='/detalle/:parametro'>
         <ItemDetail/>

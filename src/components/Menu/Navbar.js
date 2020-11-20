@@ -6,9 +6,8 @@ import CartIcon from './CartIcon';
 
 const BarraNav = () => {
       return(        
-        <>
-        <div className="navbar">
-        <Navbar bg="light"expand="lg">
+        <>        
+        <Navbar bg="light"expand="lg" className="mb-3">
           <Navbar.Brand href="#home">
             <CartIcon/>
           </Navbar.Brand>
@@ -26,8 +25,7 @@ const BarraNav = () => {
               <Nav.Link href="#link">Contacto</Nav.Link>
             </Nav>            
           </Navbar.Collapse>
-      </Navbar>
-      </div>
+      </Navbar>      
         </>
      )
       
