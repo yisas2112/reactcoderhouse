@@ -8,7 +8,7 @@ const ItemDetail = ({product})=>{
         console.log(value);
     }   
 
-    return <div className="card text-center col-4 m-auto p-0">
+    return <div className="card text-center col-5 m-auto p-0">
             <div className="card-header">
                 Modelo: {product.Model} 
             </div>
@@ -16,7 +16,7 @@ const ItemDetail = ({product})=>{
                 <img class="card-text m-3" src={product.img}></img>
                 <div className="m-auto">
                 <ItemCount initialValue={0} max={20} min={0} onaDD={ShowCant}/>
-                <a href="#" class="btn btn-primary">Comprar</a>
+                <a href="#" class="btn btn-primary mt-3">Comprar</a>
                 </div>
             </div>
             <div class="card-footer text-muted">
