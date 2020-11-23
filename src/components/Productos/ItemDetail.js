@@ -2,6 +2,7 @@ import React from 'react';
 import ItemCount from '../ItemCount';
 
 
+
 const ItemDetail = ({product})=>{
     console.log(product);
     const ShowCant = (value)=>{
@@ -10,17 +11,17 @@ const ItemDetail = ({product})=>{
 
     return <div className="card text-center col-5 m-auto p-0">
             <div className="card-header">
-                Modelo: {product.Model} 
+                {product.title} 
             </div>
             <div class="card-body d-flex">                
-                <img class="card-text m-3" src={product.img}></img>
-                <div className="m-auto">
+                <img class="card-text w-50 m-3" src={product.thumbnail}></img>
+                <div className="m-auto w-50">
                 <ItemCount initialValue={0} max={20} min={0} onaDD={ShowCant}/>
                 <a href="#" class="btn btn-primary mt-3">Comprar</a>
                 </div>
             </div>
             <div class="card-footer text-muted">
-            Año: {product.year}               
+            Precio: ${product.price}               
             </div>
         </div>
 

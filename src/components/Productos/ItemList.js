@@ -1,25 +1,20 @@
 import React, {useState, useEffect} from 'react';  
-import Data from './productos.json';
 import Item from './item';
 
 
 const ItemList = () =>{
-    const[product, setproduct] = useState();
+    const[product, setproduct] = useState();    
 
     useEffect(()=>{
-        getProduct();        
-    },[]);
-
-
-    const getProduct =() =>{
-        const server = new Promise(resolve =>{
-
-            setTimeout(()=>{resolve(Data)},2000);
-        })
-        server.then(response=>{
-            setproduct(response);
-        });
-    }
+        fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1744')
+        .then(response => response.json())
+        .then(ResultProducts=>{
+            setproduct(ResultProducts.results)
+            console.log(ResultProducts)
+            
+        },2000)
+        return()=>{};
+    },[]);    
 
     return <>
     <div>

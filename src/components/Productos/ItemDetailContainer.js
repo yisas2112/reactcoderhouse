@@ -1,4 +1,3 @@
-import { data } from 'jquery';
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import ItemDetail from './ItemDetail';
@@ -6,8 +5,7 @@ import Data from './productos.json';
 
 
 const ItemDetailContainer = () =>{
-    const {parametro} = useParams();         
-    const [productId, setProducId] = useState();   
+    const {parametro} = useParams();             
     const [product, setProduct] = useState();
     console.log(parametro);
     
@@ -15,29 +13,22 @@ const ItemDetailContainer = () =>{
       
     
     useEffect(()=>{  
-        getProduct(); 
+        fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1744')
+        .then(response => response.json())
+        .then(ResultProducts=>{
+            setProduct(ResultProducts.results)
+        },2000)
         
         
-    },);    
+    },[]);    
 
-    const getProduct =() =>{
-        const server = new Promise(resolve =>{
+    
 
-            setTimeout(()=>{resolve(Data)},2000);
-            
-        })
-        server.then(response=>{
-            setProduct(response);
-            
-        });
-    }
-
-    const ReturnProducts = ({product}) =>{
-       // const producto = product;
+    const ReturnProducts = ({product}) =>{       
         if(!product){
             return <p className="m-3">...Cargando Productos</p>
         }
-        const list = product.map((elemento, index)=>{
+        const list = product.map((elemento)=>{
                     if(elemento.id == parametro){
                     return <ItemDetail product={elemento}/>
                     }    })
