@@ -22,7 +22,7 @@ function App() {
       </Route>           
       <Route exact path="/carrito">
         <Cart/>
-      </Route>
+      </Route>    
     </Switch>
     </BrowserRouter>
     
