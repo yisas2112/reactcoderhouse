@@ -5,12 +5,14 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import ItemDetail from './components/Productos/ItemDetailContainer';
 import Cart from './components/Carrrito/Cart';
 import './App.css';
-
+import { AppProvider, CartContext } from './components/AppContext/AppContext';
 
 
 function App() {
   return (
     <>
+    <AppProvider>
+    <CartContext>
     <BrowserRouter>
     <BarraNav/>
     <Switch>
@@ -24,11 +26,9 @@ function App() {
         <Cart/>
       </Route>    
     </Switch>
-    </BrowserRouter>
-    
-    
-    
-    
+    </BrowserRouter>    
+    </CartContext>
+    </AppProvider>    
     </>
   );
 }

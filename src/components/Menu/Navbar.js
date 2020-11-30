@@ -8,7 +8,7 @@ import CartIcon from './CartIcon';
 const BarraNav = () => {
       return(        
         <>        
-        <Navbar bg="light"expand="lg" className="mb-3">
+        <Navbar bg="light"expand="md" className="mb-3">
           <Navbar.Brand href="#home">
             <CartIcon/>
           </Navbar.Brand>

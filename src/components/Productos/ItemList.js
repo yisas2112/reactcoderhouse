@@ -1,20 +1,24 @@
-import React, {useState, useEffect} from 'react';  
+import React, {useState, useEffect, useContext} from 'react';  
+import { AppContext } from '../AppContext/AppContext';
 import Item from './item';
 
 
 const ItemList = () =>{
-    const[product, setproduct] = useState();    
+    //const[product, setproduct] = useState();  
+    
+    const product = useContext(AppContext);
+    
 
-    useEffect(()=>{
-        fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1744')
-        .then(response => response.json())
-        .then(ResultProducts=>{
-            setproduct(ResultProducts.results)
-            console.log(ResultProducts)
+    // useEffect(()=>{
+    //     fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1744')
+    //     .then(response => response.json())
+    //     .then(ResultProducts=>{
+    //         setproduct(ResultProducts.results)
+    //         console.log(ResultProducts)
             
-        },2000)
-        return()=>{};
-    },[]);    
+    //     },2000)
+    //     return()=>{};
+    // },[]);    
 
     return <>
     <div>
