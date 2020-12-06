@@ -4,21 +4,10 @@ import Item from './item';
 
 
 const ItemList = () =>{
-    //const[product, setproduct] = useState();  
-    
     const product = useContext(AppContext);
     
 
-    // useEffect(()=>{
-    //     fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1744')
-    //     .then(response => response.json())
-    //     .then(ResultProducts=>{
-    //         setproduct(ResultProducts.results)
-    //         console.log(ResultProducts)
-            
-    //     },2000)
-    //     return()=>{};
-    // },[]);    
+    
 
     return <>
     <div>

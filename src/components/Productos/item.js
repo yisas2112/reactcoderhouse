@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Spinner from '../spinner/spinner';
 import './Item.css';
 
-const Item = ({product}) =>{    
-    console.log(product);   
+const Item = ({product}) =>{           
 
     const ReturnProducts = () =>{
         if(!product){
-            return <p className="m-3">...Cargando Productos</p>
+            return <p className="m-3"><Spinner/></p>
         }
         return product.map((elemento, index)=>{
                     if(index <= 20){

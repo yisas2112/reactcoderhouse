@@ -10,7 +10,7 @@ const Contador = ({initialValue, max, min, onaDD, product}) =>{
     const valorRecibido = useContext(AppContext2);
 
     const Sumar = () =>{        
-        if(count !=max){
+        if(count !==max){
           setCount(count+1);            
          onaDD(count+1);         
         }
@@ -18,7 +18,7 @@ const Contador = ({initialValue, max, min, onaDD, product}) =>{
     }
 
     const Restar = () =>{        
-        if(count != min){
+        if(count !== min){
         setCount(count-1);   
         }        
 
@@ -41,7 +41,7 @@ const Contador = ({initialValue, max, min, onaDD, product}) =>{
                 <button className="mx-2 btn btn-primary" onClick={(Restar)}>-</button>  
             </div>
             <div className="mx-2">
-                <button type="button" className="btn btn-primary my-3 " onClick={valorRecibido.SetearProduct(product), valorRecibido.SetCantidad(count),(handleShow)}>Agregar al Carrito</button>
+                <button type="button" className="btn btn-primary my-3 " onClick={()=>valorRecibido.addToCart(product,count)}>Agregar al Carrito</button>
             </div>
         </div>
         <Modal show={show} onHide={handleClose}>

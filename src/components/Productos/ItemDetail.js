@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 const ItemDetail = ({product})=>{    
-    const valorRecibido = useContext(AppContext2);
+    const {addToCart} = useContext(AppContext2);
     const [contador, setContador] = useState();
 
 
@@ -33,7 +33,7 @@ const ItemDetail = ({product})=>{
                                     </div>    
                                     <div className="col-md-6 mt-5 col-sm-12 p-3">                            
                                             <ItemCount initialValue={0} max={20} min={0} onaDD={ShowCant} product={product}/>
-                                            <Link to={`/carrito`}><button class="btn btn-primary mt-3" onClick={valorRecibido.SetearProduct(product), valorRecibido.SetCantidad(contador)}>Comprar {contador}</button></Link>                                                                            
+                                            <Link to={`/carrito`}><button class="btn btn-primary mt-3" onClick={()=>{addToCart(product,contador)}}>Comprar {contador}</button></Link>                                                                            
                                     </div>                                        
                                 </div>
                                 <div class="card-footer text-muted">

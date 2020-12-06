@@ -24,26 +24,54 @@ export const AppProvider = ({children}) =>{
             </AppContext.Provider>
 }
 
+
+
+
+
 export const CartContext = ({children}) => {
-    const [producto, setProducto] = useState([]);
-    const [carrito, setCarrito] = useState([1]);
+    const [producto, setProducto] = useState([]);  
+    const[total,setTotal] = useState(0)  
     
 
+    const addToCart = (produ,cantidad) =>{  
+        console.log(producto.id)
+        console.log(produ.id)                
+        const producFind = producto.find((e)=>e.produ.id === produ.id)
+        if(producFind){
+            producFind.cantidad += cantidad
+            setProducto([...producto])
+        }else{
+            setProducto([...producto,{produ,cantidad}])
+        }
+    }
+
+    const Total = () =>{        
+        // producto.map((e)=>{
+        //     const suma = (e.produ.price * e.cantidad)
+        //     console.log(suma)
+        //     setTotal(suma)
+            
+            
+        // } )
+
+        let suma = 0;
+        producto.forEach((e) =>{
+            suma += e.produ.price * e.cantidad
+            setTotal(suma)            
+
+            
+        });
+
+        return total
+        
+    }
+
     
 
-    const SetCantidad= (cantidad) =>{
-        setCarrito(cantidad);
-        console.log(carrito);
 
-    }
+  
 
-    const SetearProduct = (product) =>{
-        setProducto(product);
-        console.log(product)
-
-    }
-
-    return <AppContext2.Provider value={{carrito, producto,SetearProduct, SetCantidad}}>
+    return <AppContext2.Provider value={{producto,addToCart, Total}}>
         {children}
     </AppContext2.Provider>
 }
