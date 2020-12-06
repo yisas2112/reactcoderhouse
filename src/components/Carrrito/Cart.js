@@ -1,22 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext2 } from '../AppContext/AppContext';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Spinner from '../spinner/spinner';
+import { Link } from 'react-router-dom';
 
 const Cart = () =>{        
-    const {producto, Total} = useContext(AppContext2);
-    console.log(producto)
-    
+    const {producto, Total, EliminarProducto, CantidadTotal} = useContext(AppContext2);
+    console.log(producto.length)
 
-    
-
-
-    return <>   <div className="bg-primary text-center py-5 mb-4">
-                    <div className="container">
-                        <h1 className="font-weight-light text-white">Carrito</h1>
-                    </div>        
-                </div>
-                 {producto.map((e,index)=>{                
+    const mostrarItems = () =>{
+        return <> {producto.map((e,index)=>{                
                     return <>  <div key={index} className="container">
                                     <div className="row">
                                         <div className="col-xl-3 col-md-6 mb-4">
@@ -35,9 +29,9 @@ const Cart = () =>{
                                                     </div>
                                                 </div>
                                                 <div className="card-footer text-center">                                                    
-                                                    Subtotal: {e.produ.price * e.cantidad}
+                                                    Subtotal: {e.produ.price * e.cantidad}                                                    
                                                 </div>
-                                                
+                                                <button className="btn bg-primary text-white" onClick={()=>EliminarProducto(e.produ.id)}>Eliminar Producto</button>                                                
                                             </div>
                                         </div>
                                     </div>
@@ -45,20 +39,32 @@ const Cart = () =>{
                             </>
                                 })
                     }
-                    <div className="bg-primary text-center py-5 mb-4">
+                    
+    </>
+    }
+
+    const irHome = () =>{
+        return <Link to='/'><button className="btn btn-primary text-white d-flex my-3 mx-auto" >Carrito vacio, ir a Home</button> </Link>
+    }
+
+    return <>
+            <div className="bg-primary text-center py-5 mb-4">
+                    <div className="container">
+                        <h1 className="font-weight-light text-white">Carrito</h1>
+                    </div>        
+            </div>
+            {producto.length >= 1  ?  mostrarItems() : irHome()   } 
+            <div className="bg-primary text-center py-5 mb-4">
                         <div className="container text-white">
-                            Total: $<Total/>
+                            Cantidad Total: <CantidadTotal/> {' '} Total: $<Total/>
                             <div className="mt-3">
                             <button className="btn bg-dark text-white">Pagar</button>
                             </div> 
                         </div>
-                    </div>
-                    
-                    
-    
-    
-    
+                    </div>   
     </>
+
+    
 
 
 }

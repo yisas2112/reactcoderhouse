@@ -5,9 +5,6 @@ import Item from './item';
 
 const ItemList = () =>{
     const product = useContext(AppContext);
-    
-
-    
 
     return <>
     <div>

@@ -11,7 +11,7 @@ const Item = ({product}) =>{
         }
         return product.map((elemento, index)=>{
                     if(index <= 20){
-                    return <div className="col-4 Item" key={index}>
+                    return <div className="col-md-4 Item" key={index}>
                                 <div className="card card-cascade card-ecommerce mx-3">
                                     {/* Card Image */}
                                     <div className="view view-cascade overlay">                                

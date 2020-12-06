@@ -15,7 +15,7 @@ export const AppProvider = ({children}) =>{
             setProduct(ResultProducts.results)
             
             
-        },2000)
+        },3000)
         return()=>{};
     },[]);  
     
@@ -29,9 +29,7 @@ export const AppProvider = ({children}) =>{
 
 
 export const CartContext = ({children}) => {
-    const [producto, setProducto] = useState([]);  
-    const[total,setTotal] = useState(0)  
-    
+    const [producto, setProducto] = useState([]);      
 
     const addToCart = (produ,cantidad) =>{  
         console.log(producto.id)
@@ -46,24 +44,23 @@ export const CartContext = ({children}) => {
     }
 
     const Total = () =>{        
-        // producto.map((e)=>{
-        //     const suma = (e.produ.price * e.cantidad)
-        //     console.log(suma)
-        //     setTotal(suma)
-            
-            
-        // } )
-
-        let suma = 0;
-        producto.forEach((e) =>{
-            suma += e.produ.price * e.cantidad
-            setTotal(suma)            
-
-            
-        });
-
-        return total
+        return producto.reduce((acc, e)=>(acc += e.produ.price * e.cantidad),0)
         
+    }
+
+    const EliminarProducto = (id) =>{      
+        const productoEncontrado = producto.findIndex((e)=> e.produ.id === id)
+        console.log(productoEncontrado)
+        if(productoEncontrado != -1){
+            producto.splice(productoEncontrado,1)
+            setProducto([...producto])
+            Total()
+            
+        }
+    }
+
+    const CantidadTotal = () =>{
+        return producto.reduce((acc,e)=>(acc += e.cantidad),0)
     }
 
     
@@ -71,7 +68,7 @@ export const CartContext = ({children}) => {
 
   
 
-    return <AppContext2.Provider value={{producto,addToCart, Total}}>
+    return <AppContext2.Provider value={{producto,addToCart, Total, EliminarProducto, CantidadTotal}}>
         {children}
     </AppContext2.Provider>
 }
