@@ -16,7 +16,7 @@ const BarraNav = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <Link to={'/'}><Nav.Link href="#home">Home</Nav.Link></Link>
-              <Nav.Link href="#link">Quienes Somos</Nav.Link>
+              <Link to={'/firebase'}> <Nav.Link href="#link">Prueba Firebase</Nav.Link></Link>
               <NavDropdown title="Servicios" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

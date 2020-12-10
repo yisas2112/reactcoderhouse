@@ -5,12 +5,14 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import ItemDetail from './components/Productos/ItemDetailContainer';
 import Cart from './components/Carrrito/Cart';
 import './App.css';
-import { AppProvider, CartContext } from './components/AppContext/AppContext';
+import { AppFirebase, AppProvider, CartContext} from './components/AppContext/AppContext';
+import {EjercicioFirebase} from './firebase/firebase'
 
 
 function App() {
   return (
-    <>
+    <>    
+    <AppFirebase>
     <AppProvider>
     <CartContext>
     <BrowserRouter>
@@ -24,11 +26,16 @@ function App() {
       </Route>           
       <Route exact path="/carrito">
         <Cart/>
+      </Route>
+      <Route exact path='/firebase'>
+        <EjercicioFirebase/>
       </Route>    
     </Switch>
     </BrowserRouter>    
     </CartContext>
-    </AppProvider>    
+    </AppProvider>       
+    </AppFirebase>
+    
     </>
   );
 }

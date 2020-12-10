@@ -1,9 +1,12 @@
 import React from 'react'
 import {useEffect, useState} from 'react';
+import {getFirestore} from '../../firebase';
 
 export const AppContext = React.createContext();
 
 export const AppContext2 = React.createContext();
+
+export const AppContext3 = React.createContext();
 
 export const AppProvider = ({children}) =>{
     const [product, setProduct] = useState();       
@@ -51,7 +54,7 @@ export const CartContext = ({children}) => {
     const EliminarProducto = (id) =>{      
         const productoEncontrado = producto.findIndex((e)=> e.produ.id === id)
         console.log(productoEncontrado)
-        if(productoEncontrado != -1){
+        if(productoEncontrado !== -1){
             producto.splice(productoEncontrado,1)
             setProducto([...producto])
             Total()
@@ -63,12 +66,41 @@ export const CartContext = ({children}) => {
         return producto.reduce((acc,e)=>(acc += e.cantidad),0)
     }
 
-    
-
-
-  
-
     return <AppContext2.Provider value={{producto,addToCart, Total, EliminarProducto, CantidadTotal}}>
         {children}
     </AppContext2.Provider>
+}
+
+
+export const AppFirebase = ({children}) =>{    
+    const [items, setItems] = useState([]);
+    const [precioAlto, setPrecioAlto] = useState([])
+    console.log(precioAlto)
+    console.log(items)
+    
+
+    useEffect(()=>{        
+        const db = getFirestore()
+        const itemCollection = db.collection('productos')
+        const highPrice = itemCollection.where('price', '>',7000)
+        
+        itemCollection.get().then((query)=>{
+            if(query.size ===0){
+                <>Cargando</>
+            }
+            setItems(query.docs.map(doc => doc.data()));
+        }).catch((error)=>{
+            console.log("error de carga de items")
+        })
+
+        highPrice.get().then((query)=>{
+            setPrecioAlto(query.docs.map(doc => doc.data()))
+        })
+
+    },[])
+
+
+    return <AppContext3.Provider value={{items,precioAlto}}>
+        {children}
+    </AppContext3.Provider>
 }
