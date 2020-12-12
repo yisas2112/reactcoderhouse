@@ -1,6 +1,5 @@
 import React from 'react';
 import ItemList from '../../components/Productos/ItemList';
-import {useEffect} from 'react'
 
 const Home = ({greetings}) => {        
    

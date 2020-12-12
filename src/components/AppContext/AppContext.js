@@ -6,20 +6,25 @@ export const AppContext = React.createContext();
 
 export const AppContext2 = React.createContext();
 
-export const AppContext3 = React.createContext();
+
 
 export const AppProvider = ({children}) =>{
     const [product, setProduct] = useState();       
-
+    
+    
     useEffect(()=>{
-        fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1744')
-        .then(response => response.json())
-        .then(ResultProducts=>{
-            setProduct(ResultProducts.results)
-            
-            
-        },3000)
-        return()=>{};
+        const db = getFirestore()
+        const itemCollection = db.collection('productos')        
+        
+        itemCollection.get().then((query)=>{            
+            setProduct(query.docs.map(doc => doc.data()));
+        }).catch((error)=>{
+            console.log("error de carga de items")
+        })
+        
+        return()=>{
+    
+        };
     },[]);  
     
     return <AppContext.Provider value={product}>
@@ -72,35 +77,3 @@ export const CartContext = ({children}) => {
 }
 
 
-export const AppFirebase = ({children}) =>{    
-    const [items, setItems] = useState([]);
-    const [precioAlto, setPrecioAlto] = useState([])
-    console.log(precioAlto)
-    console.log(items)
-    
-
-    useEffect(()=>{        
-        const db = getFirestore()
-        const itemCollection = db.collection('productos')
-        const highPrice = itemCollection.where('price', '>',7000)
-        
-        itemCollection.get().then((query)=>{
-            if(query.size ===0){
-                <>Cargando</>
-            }
-            setItems(query.docs.map(doc => doc.data()));
-        }).catch((error)=>{
-            console.log("error de carga de items")
-        })
-
-        highPrice.get().then((query)=>{
-            setPrecioAlto(query.docs.map(doc => doc.data()))
-        })
-
-    },[])
-
-
-    return <AppContext3.Provider value={{items,precioAlto}}>
-        {children}
-    </AppContext3.Provider>
-}

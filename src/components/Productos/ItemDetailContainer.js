@@ -1,16 +1,20 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {useParams} from 'react-router-dom';
 import { AppContext } from '../AppContext/AppContext';
+import Spinner from '../spinner/spinner';
 import ItemDetail from './ItemDetail';
 
 
 const ItemDetailContainer = () =>{
     const {parametro} = useParams();         
     const product = useContext(AppContext)
-
+    console.log(product)
+    
+    
+   
     const ReturnProducts = ({product}) =>{       
         if(!product){
-            return <p className="m-3">...Cargando Productos</p>
+            return <Spinner className="m-3"/>
         }
         const list = product.map((elemento)=>{
                     if(elemento.id == parametro){
