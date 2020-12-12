@@ -1,6 +1,7 @@
 import React from 'react'
 import {useEffect, useState} from 'react';
 import {getFirestore} from '../../firebase';
+import Item from '../Productos/item';
 
 export const AppContext = React.createContext();
 
@@ -9,25 +10,48 @@ export const AppContext2 = React.createContext();
 
 
 export const AppProvider = ({children}) =>{
-    const [product, setProduct] = useState();       
+    const [product, setProduct] = useState();
+    const [desc, setDesc] = useState()
+    const [asc, SetAsc] = useState()       
+    console.log(desc)
+    console.log(asc)
     
+    const OrdenDesc = ()=>{
+        return <Item product={desc}/>
+    }
     
     useEffect(()=>{
         const db = getFirestore()
-        const itemCollection = db.collection('productos')        
+        const itemCollection = db.collection('productos')                
+        const OrdenDesc = itemCollection.orderBy('price', 'desc')
+        const OrdenAsc = itemCollection.orderBy('price', 'asc')
         
         itemCollection.get().then((query)=>{            
             setProduct(query.docs.map(doc => doc.data()));
         }).catch((error)=>{
             console.log("error de carga de items")
         })
+
+        OrdenDesc.get().then((query)=>{            
+            setDesc(query.docs.map(doc => doc.data()));
+        }).catch((error)=>{
+            console.log("error de carga de items")
+        })
+
+        OrdenAsc.get().then((query)=>{            
+            SetAsc(query.docs.map(doc => doc.data()));
+        }).catch((error)=>{
+            console.log("error de carga de items")
+        })
+
+
         
         return()=>{
     
         };
     },[]);  
     
-    return <AppContext.Provider value={product}>
+    return <AppContext.Provider value={{product, desc, asc}}>
                 {children}        
             </AppContext.Provider>
 }

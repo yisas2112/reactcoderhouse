@@ -6,6 +6,9 @@ import ItemDetail from './components/Productos/ItemDetailContainer';
 import Cart from './components/Carrrito/Cart';
 import './App.css';
 import {AppProvider, CartContext} from './components/AppContext/AppContext';
+import ItemListDesc from './components/Productos/itemListDesc/ItemListDesc';
+import ItemListAsc from './components/Productos/ItemListAsc';
+
 
 
 
@@ -25,7 +28,13 @@ function App() {
       </Route>           
       <Route exact path="/carrito">
         <Cart/>
+      </Route>
+      <Route exact path='/desc'>
+      <ItemListDesc/>
       </Route>      
+      <Route exact path='/asc'>
+        <ItemListAsc/>
+      </Route>
     </Switch>
     </BrowserRouter>    
     </CartContext>
