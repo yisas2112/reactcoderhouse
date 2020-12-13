@@ -7,7 +7,7 @@ import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () =>{
     const {parametro} = useParams();         
-    const product = useContext(AppContext)
+    const {product} = useContext(AppContext)
     console.log(product)
     
     
