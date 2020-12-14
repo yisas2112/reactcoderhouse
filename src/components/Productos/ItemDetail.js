@@ -23,7 +23,7 @@ const ItemDetail = ({product})=>{
             </div>
             <div className="container-fluid">
                         <div className="row">                
-                            <div className="card text-center col-sm-3 col-md-7 my-3 m-auto p-0">                        
+                            <div className="card text-center col-sm-8 col-lg-6 col-md-10 my-3 m-auto p-0">                        
                                     <div className="card-header">
                                         {product.title}                 
                                     </div>                        
