@@ -10,7 +10,7 @@ const CartIcon = () => {
 return (    
         <>
         
-        <Link to={`/carrito`}><img src={logo} alt="Ecommerce"  width="30" height="30" className="d-inline-block align-top"/></Link>
+        <Link to={`/carrito`}><img src={logo} alt="Ecommerce"  width="30" height="30" className="d-inline-block align-top mr-3"/>Ir a Carrito</Link>
         </>
 
     
