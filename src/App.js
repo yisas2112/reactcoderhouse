@@ -8,6 +8,7 @@ import './App.css';
 import {AppProvider, CartContext} from './components/AppContext/AppContext';
 import ItemListDesc from './components/Productos/itemListDesc/ItemListDesc';
 import ItemListAsc from './components/Productos/ItemListAsc';
+import Venta from './components/Venta';
 
 
 
@@ -34,6 +35,9 @@ function App() {
       </Route>      
       <Route exact path='/asc'>
         <ItemListAsc/>
+      </Route>
+      <Route exact path='/formulario'>
+        <Venta/>
       </Route>
     </Switch>
     </BrowserRouter>    

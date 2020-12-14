@@ -4,6 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Spinner from '../spinner/spinner';
 import { Link } from 'react-router-dom';
+import Venta from '../Venta';
 
 const Cart = () =>{        
     const {producto, Total, EliminarProducto, CantidadTotal} = useContext(AppContext2);
@@ -57,8 +58,8 @@ const Cart = () =>{
             <div className="bg-primary text-center py-5 mb-4">
                         <div className="container text-white">
                             Cantidad Total: <CantidadTotal/> {' '} Total: $<Total/>
-                            <div className="mt-3">
-                            <button className="btn bg-dark text-white">Pagar</button>
+                            <div className="mt-3">                            
+                            <Link to='formulario'> <button className="btn bg-dark text-white">Pagar</button></Link>
                             </div> 
                         </div>
                     </div>   

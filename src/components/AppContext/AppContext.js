@@ -1,7 +1,6 @@
 import React from 'react'
 import {useEffect, useState} from 'react';
 import {getFirestore} from '../../firebase';
-import Item from '../Productos/item';
 
 export const AppContext = React.createContext();
 
@@ -10,21 +9,16 @@ export const AppContext2 = React.createContext();
 
 
 export const AppProvider = ({children}) =>{
-    const [product, setProduct] = useState();
+    const [product, setProduct] = useState();    
     const [desc, setDesc] = useState()
     const [asc, SetAsc] = useState()       
-    console.log(desc)
-    console.log(asc)
     
-    const OrdenDesc = ()=>{
-        return <Item product={desc}/>
-    }
     
     useEffect(()=>{
         const db = getFirestore()
         const itemCollection = db.collection('productos')                
         const OrdenDesc = itemCollection.orderBy('price', 'desc')
-        const OrdenAsc = itemCollection.orderBy('price', 'asc')
+        const OrdenAsc = itemCollection.orderBy('price', 'asc')        
         
         itemCollection.get().then((query)=>{            
             setProduct(query.docs.map(doc => doc.data()));
@@ -61,11 +55,11 @@ export const AppProvider = ({children}) =>{
 
 
 export const CartContext = ({children}) => {
-    const [producto, setProducto] = useState([]);      
+    const [producto, setProducto] = useState([]); 
+    const [total, setTotal] = useState()
+         
 
-    const addToCart = (produ,cantidad) =>{  
-        console.log(producto.id)
-        console.log(produ.id)                
+    const addToCart = (produ,cantidad) =>{                   
         const producFind = producto.find((e)=>e.produ.id === produ.id)
         if(producFind){
             producFind.cantidad += cantidad
@@ -76,7 +70,9 @@ export const CartContext = ({children}) => {
     }
 
     const Total = () =>{        
-        return producto.reduce((acc, e)=>(acc += e.produ.price * e.cantidad),0)
+        const total = producto.reduce((acc, e)=>(acc += e.produ.price * e.cantidad),0)
+        setTotal(total)
+        return total
         
     }
 
@@ -95,7 +91,19 @@ export const CartContext = ({children}) => {
         return producto.reduce((acc,e)=>(acc += e.cantidad),0)
     }
 
-    return <AppContext2.Provider value={{producto,addToCart, Total, EliminarProducto, CantidadTotal}}>
+    const Buyer = (buyer) =>{
+        let venta ={
+            buyer: buyer,
+            items: producto,
+            total: total
+        }
+        console.log(venta)
+        const db = getFirestore()
+        db.collection('ventas').add({venta})                
+        
+    }
+
+    return <AppContext2.Provider value={{producto,addToCart, Total, EliminarProducto, CantidadTotal, Buyer}}>
         {children}
     </AppContext2.Provider>
 }

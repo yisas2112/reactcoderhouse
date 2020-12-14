@@ -1,14 +1,24 @@
-import React, {useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import { AppContext } from '../AppContext/AppContext';
+import { getFirestore } from '../../firebase';
 import Spinner from '../spinner/spinner';
 import ItemDetail from './ItemDetail';
 
 
 const ItemDetailContainer = () =>{
-    const {parametro} = useParams();         
-    const {product} = useContext(AppContext)
-    console.log(product)
+    const {parametro} = useParams();             
+    const [pro,setPro] = useState()
+    console.log(pro)
+    
+    useEffect(()=>{
+        const db = getFirestore()
+        const itemCollection = db.collection('productos')      
+        itemCollection.get().then((query)=>{            
+            const data = query.docs.map(doc => ({...doc.data(), id: doc.id}))
+            console.log(data)
+            setPro(data)
+        })
+    },[])
     
     
    
@@ -26,7 +36,7 @@ const ItemDetailContainer = () =>{
 
 
     
-    return <ReturnProducts product = {product}/>
+    return <ReturnProducts product = {pro}/>
     
 
 
