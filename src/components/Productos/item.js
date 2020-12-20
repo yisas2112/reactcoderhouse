@@ -4,6 +4,7 @@ import Spinner from '../spinner/spinner';
 import './Item.css';
 
 const Item = ({product}) =>{           
+    console.log(product)
 
     const ReturnProducts = () =>{
         if(!product){
@@ -23,13 +24,19 @@ const Item = ({product}) =>{
                                             </a>
                                         </div>
                                         {/* Card Content */}                            
-                                        <div className="card-body card-body-cascade text-center">   
+                                        <div className="card-body card-body-cascade text-center detalle">   
                                             <h5>{elemento.title} - {elemento.year}</h5>
                                             <Link to={`detalle/${elemento.id}`}><button type="button" className="btn btn-primary">Detalle</button></Link> 
                                         </div>
                                         {/* Card Footer */}                                    
                                         <div className="card-footer m-auto w-100">
-                                            <span>Año: {elemento.year}</span>                                                                
+                                            {elemento.attributes.map((e)=>{                                                                                                                                                                                                                   
+                                                if(e.value_name.startsWith('20',0)){
+                                                    return <span>Año:  {e.value_name}</span>
+                                                }
+                                                        
+                                            })}
+                                                                                   
                                         </div>                            
                                     </div>
                                 </div>

@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Modal} from 'react-bootstrap';
 import { AppContext2 } from '../AppContext/AppContext';
+import { Link } from 'react-router-dom';
 
 const Contador = ({initialValue, max, min, onaDD, product}) =>{
     const[count, setCount] = useState(initialValue);  
@@ -22,7 +23,7 @@ const Contador = ({initialValue, max, min, onaDD, product}) =>{
         setCount(count-1);   
         }        
 
-        onaDD(count-1);
+        onaDD(count);
    }  
   
 
@@ -36,21 +37,23 @@ const Contador = ({initialValue, max, min, onaDD, product}) =>{
                 <p>Cantidad</p>
             </div>
             <div className="d-flex justify-content-center my-3 " >
-                <button className="mx-2 btn btn-primary" onClick={(Sumar)} >+</button>
+                <button className="mx-2 btn btn-primary" onClick={(Restar)}>-</button>
                 <p className="my-2"> {count}</p>            
-                <button className="mx-2 btn btn-primary" onClick={(Restar)}>-</button>  
+                <button className="mx-2 btn btn-primary" onClick={(Sumar)} >+</button>
+                  
             </div>
             <div className="mx-2">
-                <button type="button" className="btn btn-primary my-3 " onClick={()=>valorRecibido.addToCart(product,count)}>Agregar al Carrito</button>
+                <button type="button" className="btn btn-primary my-3 " onClick={()=> {valorRecibido.addToCart(product,count); handleShow()}}>Agregar al Carrito</button>
             </div>
         </div>
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Felicitaciones</Modal.Title>
             </Modal.Header>
             <Modal.Body>Agregaste al carrito {count} cantidades</Modal.Body>
-            <Modal.Footer>                
-                <Button variant="primary" onClick={handleClose}>Aceptar</Button>                
+            <Modal.Footer>
+                <Link to='/carrito'><Button>Ir a carrito</Button></Link>                
+                <Link to='/'><Button variant="primary">Seguir Comprando</Button></Link>
             </Modal.Footer>
         </Modal>
         </>

@@ -8,15 +8,15 @@ import CartIcon from './CartIcon';
 const BarraNav = () => {
       return(        
         <>        
-        <Navbar bg="light"expand="md" className="mb-3">
+        <Navbar bg="light"expand="md">
           <Navbar.Brand href="#home">
             <CartIcon/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Link to={'/'}><Nav.Link href="#home">Home</Nav.Link></Link>
-              <Link to={'/firebase'}> <Nav.Link href="#link">Prueba Firebase</Nav.Link></Link>
+              <Link to={'/'}><Nav.Link href="#home">Productos</Nav.Link></Link>
+              <Nav.Link href="#link">Quiénes Somos</Nav.Link>
               <NavDropdown title="Servicios" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

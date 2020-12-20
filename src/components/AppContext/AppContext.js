@@ -11,14 +11,19 @@ export const AppContext2 = React.createContext();
 export const AppProvider = ({children}) =>{
     const [product, setProduct] = useState();    
     const [desc, setDesc] = useState()
-    const [asc, SetAsc] = useState()       
+    const [asc, SetAsc] = useState()
+            
     
     
     useEffect(()=>{
         const db = getFirestore()
         const itemCollection = db.collection('productos')                
         const OrdenDesc = itemCollection.orderBy('price', 'desc')
-        const OrdenAsc = itemCollection.orderBy('price', 'asc')        
+        const OrdenAsc = itemCollection.orderBy('price', 'asc')    
+        
+        
+        
+         
         
         itemCollection.get().then((query)=>{            
             setProduct(query.docs.map(doc => doc.data()));
@@ -37,6 +42,8 @@ export const AppProvider = ({children}) =>{
         }).catch((error)=>{
             console.log("error de carga de items")
         })
+
+        
 
 
         
@@ -97,11 +104,11 @@ export const CartContext = ({children}) => {
             items: producto,
             total: total
         }
-        console.log(venta)
-        const db = getFirestore()
-        db.collection('ventas').add({venta})                
         
-    }
+        const db = getFirestore()
+        db.collection('ventas').add({venta})
+        
+    }    
 
     return <AppContext2.Provider value={{producto,addToCart, Total, EliminarProducto, CantidadTotal, Buyer}}>
         {children}
