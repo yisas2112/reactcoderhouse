@@ -5,10 +5,11 @@ import './navbar.scss';
 import {Link} from 'react-router-dom';
 import CartIcon from './CartIcon';
 
+
 const BarraNav = () => {
       return(        
         <>        
-        <Navbar bg="light"expand="md">
+        <Navbar className='f-flex' expand="md" bg="light">
           <Navbar.Brand href="#home">
             <CartIcon/>
           </Navbar.Brand>

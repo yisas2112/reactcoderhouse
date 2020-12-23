@@ -10,9 +10,6 @@ import ItemListDesc from './components/Productos/itemListDesc/ItemListDesc';
 import ItemListAsc from './components/Productos/ItemListAsc';
 import Venta from './components/Venta';
 
-
-
-
 function App() {
   return (
     <>        
@@ -38,8 +35,8 @@ function App() {
       </Route>
       <Route exact path='/formulario'>
         <Venta/>
-      </Route>
-    </Switch>
+      </Route>      
+    </Switch>    
     </BrowserRouter>    
     </CartContext>
     </AppProvider>       

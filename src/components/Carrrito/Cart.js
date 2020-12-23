@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import { AppContext2 } from '../AppContext/AppContext';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Spinner from '../spinner/spinner';
 import { Link } from 'react-router-dom';
 import './Cart.scss'
 
@@ -58,14 +57,14 @@ const Cart = () =>{
                     </div>        
             </div>
             {producto.length >= 1  ?  mostrarItems() : irHome()   } 
-            <div className="bg-primary text-center py-5 mb-4">
+            <div className="bg-primary text-center py-5 fixed-bottom" >
                         <div className="container text-white">
                             Cantidad Total: <CantidadTotal/> {' '} Total: $<Total/>
                             <div className="mt-3">                            
                             <Link to='formulario'> <button disabled={producto.length == 0} id='pagar' className="btn bg-dark text-white" >Pagar</button></Link>
                             </div> 
                         </div>
-                    </div>   
+            </div>   
     </>
 
     

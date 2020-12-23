@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react"
 import { getFirestore } from "../../firebase";
 import {AppContext2 } from "../AppContext/AppContext";
 import {Button, Modal} from 'react-bootstrap';
+import Footer from "../Footer";
+import { Link } from "react-router-dom";
 
 const Venta = ()=>{
     const {Buyer, producto} = useContext(AppContext2);    
@@ -75,17 +77,16 @@ const Venta = ()=>{
                     </div>        
         </div>
         <div className='container'>
-        <form className='row m-auto text-center' onSubmit={enviarDatos}>
-            <div className='col-md-3 my-2'>
+        <form className='row text-center my-lg-5 d-flex justify-content-center' onSubmit={enviarDatos}>
+            <div className='my-2 col-lg-8'>
                 <input placeholder='Ingrese Nombre: '
                 className='form-control'
                 type='text'
                 name='nombre'
-                onChange={handleInputChange}> 
-                              
+                onChange={handleInputChange}>                               
                 </input>
             </div>
-            <div className='col-md-3 my-2'>
+            <div className=' my-2 col-lg-8'>
                 <input placeholder='Ingrese Apellido: '
                 className='form-control'
                 type='text'
@@ -93,29 +94,30 @@ const Venta = ()=>{
                 onChange={handleInputChange}> 
                 </input>
             </div>
-            <div className='col-md-3 my-2'>
-                <input placeholder='Ingrese Nombe: '
+            <div className=' my-2 col-lg-8'>
+                <input placeholder='Ingrese Email: '
                 className='form-control'
                 type='text'
                 name='email'
                 onChange={handleInputChange}>                
                 </input>
             </div>
-            <div className='col-md-3 my-2'>
+            <div className='my-2 col-lg-8'>
                 <button className='btn btn-primary' type='submit' onClick={()=>{Buyer(buyer); vaciarCarrito(); handleShow()}}>Enviar</button>
             </div>
         </form>
-        </div>
+        </div>   
+        <Footer/>
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Felicitaciones</Modal.Title>
+                <Modal.Title>Felicitaciones!!</Modal.Title>
             </Modal.Header>
             <Modal.Body>Tu número de orden es {orden +1}
             <div>A la brevedad nos comunicaremos con vos para completar la compra</div>
             </Modal.Body>
             <Modal.Body></Modal.Body>
             <Modal.Footer>                
-                <Button variant="primary" onClick={handleClose} >Aceptar</Button>
+               <Link to='/'><Button variant="primary" onClick={handleClose} >Aceptar</Button></Link>
             </Modal.Footer>
         </Modal>
     </>

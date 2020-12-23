@@ -30,12 +30,7 @@ const Item = ({product}) =>{
                                         </div>
                                         {/* Card Footer */}                                    
                                         <div className="card-footer m-auto w-100">
-                                            {elemento.attributes.map((e)=>{                                                                                                                                                                                                                   
-                                                if(e.value_name.startsWith('20',0)){
-                                                    return <span>Año:  {e.value_name}</span>
-                                                }
-                                                        
-                                            })}
+                                            Precio: ${elemento.price}
                                                                                    
                                         </div>                            
                                     </div>
@@ -43,12 +38,12 @@ const Item = ({product}) =>{
                             </div>
                             </>
                     }
-                })                
+                })          
                 
     }
 
     return <>    
-    <ReturnProducts/>    
+    <ReturnProducts/>        
     </>
 
     

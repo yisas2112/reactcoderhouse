@@ -1,7 +1,9 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../AppContext/AppContext';
+import Footer from '../../Footer';
 import Item from '../item';
+import '../itemList.scss';
 
 
 const ItemListDesc = () =>{        
@@ -11,7 +13,7 @@ const ItemListDesc = () =>{
     <h1 className="h1 text-center">E-commerce</h1>       
         <h2 className="h2 text-center my-3">Productos</h2>
         <div className='row'>
-            <div className='ml-auto' >                
+            <div className='ml-auto button__filtros' >                
                 <Link to='asc' className='btn btn-secondary'>Orden Precio Acendente</Link>
                 <Link to='desc' className='btn btn-secondary mx-3'>Orden Precio Descendente</Link>
             </div>
@@ -19,7 +21,8 @@ const ItemListDesc = () =>{
         <div className='row'>            
             <Item product={desc}/>
         </div>        
-    </div>    
+    </div>
+    <Footer/>
     </>
 
 
