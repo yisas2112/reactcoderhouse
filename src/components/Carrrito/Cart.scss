@@ -1,5 +1,8 @@
 .carrito__image_product{
     height: 250px;
+    display: block;
+    
+
 }
 
 @media (max-width: 640px){
@@ -8,6 +11,6 @@
 
     }
     .carrito_image{
-        height: 100px;
+        height: 100%;
     }
 }
