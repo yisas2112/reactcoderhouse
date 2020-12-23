@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Spinner from '../spinner/spinner';
-import './Item.css';
+import './Item.scss';
 
 const Item = ({product}) =>{           
     console.log(product)
@@ -17,8 +17,8 @@ const Item = ({product}) =>{
                                 <div key={index}>
                                     <div className="card card-cascade card-ecommerce my-3">
                                         {/* Card Image */}
-                                        <div className="view view-cascade overlay">                                
-                                        <Link to={`/detalle/${elemento.id}`}><img className="w-100" src={elemento.thumbnail}></img></Link>
+                                        <div id='card-items' className="view view-cascade overlay">                                
+                                        <Link to={`/detalle/${elemento.id}`}><img className="img-fluid" src={elemento.thumbnail}></img></Link>
                                             <a>
                                                 <div className="mask rgba-white-slight"></div>
                                             </a>

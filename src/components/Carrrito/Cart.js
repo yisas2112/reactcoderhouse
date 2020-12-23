@@ -13,8 +13,8 @@ const Cart = () =>{
     const mostrarItems = () =>{
         return <> {producto.map((e,index)=>{                
                     return <>  <div key={index} className="container">
-                                    <div className="row">
-                                        <div className="col-xl-6 col-md-6 mb-4 col-xl-3">
+                                    <div className="row detail__delete_items">
+                                        <div className="col-xl-6 col-md-6 mb-4 col-xl-3 carrito_image">
                                             <div className="card border-0 shadow">
                                                 <img src={e.produ.thumbnail} className="carrito__image_product"></img>
                                                 <div className="card-body text-center" >
@@ -57,7 +57,7 @@ const Cart = () =>{
                     </div>        
             </div>
             {producto.length >= 1  ?  mostrarItems() : irHome()   } 
-            <div className="bg-primary text-center py-5 fixed-bottom" >
+            <div className="bg-primary text-center py-5 fixed-bottom " >
                         <div className="container text-white">
                             Cantidad Total: <CantidadTotal/> {' '} Total: $<Total/>
                             <div className="mt-3">                            

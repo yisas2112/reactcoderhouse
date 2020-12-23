@@ -2,3 +2,12 @@
     height: 250px;
 }
 
+@media (max-width: 640px){
+    .detail__delete_items{
+        height: 800px;
+
+    }
+    .carrito_image{
+        height: 100px;
+    }
+}
