@@ -37,6 +37,7 @@
 
 .glow-on-hover:active:after {
     background: transparent;
+    
 }
 
 .glow-on-hover:hover:before {
@@ -72,4 +73,18 @@
         transform: translate(-50%, -50%);
         
     }
+    .detail__delete_items{
+        height: 800px;
+
+    }
+    .carrito_image{
+        height: 100%;
+    }
+}
+
+.carrito__image_product{
+    height: 250px;
+    display: block;
+    
+
 }
