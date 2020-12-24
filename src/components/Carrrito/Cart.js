@@ -14,7 +14,7 @@ const Cart = () =>{
         return <> {producto.map((e,index)=>{                
                     return <>  <div key={index} className="container">
                                     <div className="row align-items-center d-flex justify-content-center">
-                                        <div className="col-xl-6 col-md-6 mb-4 col-xl-3 carrito_image">
+                                        <div className="col-xl-5 col-md-6 mb-4 col-xl-3 carrito_image">
                                             <div className="card border-0 shadow">
                                                 <img src={e.produ.thumbnail} className="carrito__image_product"></img>
                                                 <div className="card-body text-center" >
@@ -47,7 +47,7 @@ const Cart = () =>{
 
 
     const irHome = () =>{
-        return <Link to='/'><button className="btn btn-primary text-white d-flex my-3 mx-auto" >Carrito vacio, ir a Home</button> </Link>
+        return <Link to='/' style={{textDecoration:'none'}}><button className="glow-on-hover" >Carrito vacío, ir a Home</button> </Link>
     }
 
     return <>

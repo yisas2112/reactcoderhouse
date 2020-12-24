@@ -21,9 +21,10 @@ const Contador = ({initialValue, max, min, onaDD, product}) =>{
     const Restar = () =>{        
         if(count !== min){
         setCount(count-1);   
+        onaDD(count-1);
         }        
 
-        onaDD(count);
+      
    }  
   
 
@@ -43,7 +44,7 @@ const Contador = ({initialValue, max, min, onaDD, product}) =>{
                   
             </div>
             <div className="mx-2">
-                <button type="button" className="btn btn-primary my-3 " onClick={()=> {valorRecibido.addToCart(product,count); handleShow()}}>Agregar al Carrito</button>
+                <button type="button" disabled={count == 0} className="btn btn-primary my-3 " onClick={()=> {valorRecibido.addToCart(product,count); handleShow()}}>Agregar al Carrito</button>
             </div>
         </div>
         <Modal show={show} onHide={handleClose}>

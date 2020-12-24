@@ -4,6 +4,7 @@ import {useState} from 'react';
 import { AppContext2 } from '../AppContext/AppContext';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer';
+import './itemDetail.scss'
 
 
 
@@ -13,6 +14,8 @@ const ItemDetail = ({product})=>{
 
 
     const ShowCant = (value)=>{
+        console.log(value)
+        
         setContador(value);
     }   
 
@@ -22,6 +25,7 @@ const ItemDetail = ({product})=>{
                     <h1 className="font-weight-light text-white">Detalle del producto</h1>
                 </div>        
             </div>
+            <Link to='/' style={{textDecoration:'none'}}><button className="glow-on-hover" >Home</button> </Link>
             <div className="container-fluid">
                         <div className="row">                
                             <div className="card text-center col-sm-8 col-lg-6 col-md-10 my-3 m-auto p-0">                        
@@ -34,7 +38,7 @@ const ItemDetail = ({product})=>{
                                     </div>    
                                     <div className="col-md-6 mt-md-5 mt-sm-2 col-sm-12 p-3">                            
                                             <ItemCount initialValue={0} max={20} min={0} onaDD={ShowCant} product={product}/>
-                                            <Link to={`/carrito`}><button class="btn btn-primary mt-3" onClick={()=>{addToCart(product,contador)}}>Comprar {contador}</button></Link>                                                                            
+                                            <Link to={`/carrito`}><button class="btn btn-primary mt-3" disabled={!contador} onClick={()=>{addToCart(product,contador)}}>Comprar {contador}</button></Link>                                                                            
                                     </div>                                        
                                 </div>
                                 <div class="card-footer text-muted">

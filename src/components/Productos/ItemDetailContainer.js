@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { getFirestore } from '../../firebase';
 import Spinner from '../spinner/spinner';
 import ItemDetail from './ItemDetail';
@@ -22,11 +22,11 @@ const ItemDetailContainer = () =>{
     
     
    
-    const ReturnProducts = ({product}) =>{       
+    const ReturnProducts = ({product}) =>{          
         if(!product){
-            return <Spinner className="m-3"/>
+            return <Spinner/>
         }
-        const list = product.map((elemento)=>{
+        const list = product.map((elemento)=>{                
                     if(elemento.id == parametro){
                     return <ItemDetail product={elemento}/>
                     }    })
